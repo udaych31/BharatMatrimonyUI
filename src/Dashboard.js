@@ -3,20 +3,36 @@ import {BrowserRouter,Route} from 'react-router-dom';
 import Header from './Header';
 import ViewDetails from './ViewDetails';
 import MyProfile from './MyProfile';
+import Contents from './Contents';
 
 class Dashboard extends Component{
-    componentDidMount(){
-        this.props.history.push('./myProfile');
+    constructor(props){
+        super(props);
+        this.state={
+            emailId:props.match.params.mailId
+        }
     }
+
+    componentDidMount(){
+        //alert(this.state.emailId);
+      
+    }
+
+    go=()=>{
+          var id=this.state.emailId;
+        this.props.history.push('/header/'+id);
+    }
+
     render(){
         return(
             <div>
                  <BrowserRouter>
                     <div>
-                    <Header/>
+                    <MyProfile/> 
                     <Route path='/header' component={Header}></Route>
                     <Route path='/viewDetails/:idParam' component={ViewDetails}></Route>
-                    <Route path='/myProfile' component={MyProfile}></Route>
+                    <Route path='/myProfile/:emailId' component={MyProfile}></Route>
+                    
                     </div>
                 </BrowserRouter>
             </div>

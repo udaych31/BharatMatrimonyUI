@@ -37,7 +37,7 @@ class SignUp extends Component{
         const{notification}=this.state;
         var global=this;
         console.log(regData);
-        axios.post('http://10.117.189.169:9090/matrimonyapp/matrimony/registerAccount',regData).then(function(response){
+        axios.post('http://10.233.166.249:9090/matrimonyapp/matrimony/registerAccount',regData).then(function(response){
             if(response.data.statusCode===401){
                 alert(response.data.message)
             }

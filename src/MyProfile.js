@@ -1,57 +1,58 @@
 import React,{Component} from 'react';
+import Header from './Header';
+import './App.css'
 import axios from 'axios';
 
-class MyProfile extends Component{
+class Contents extends Component{
     constructor(props){
         super(props);
         this.state={
-            list:[],
-            emailId:props.match.params.mailId
+            profile:[],
+            mail:props.match.params.emailId
         }
     }
 
     componentDidMount(){
         const{list}=this.state;
-        const{emailId}=this.state;
-        alert(this.state.emailId);
-        axios.get(`http://10.117.189.134:9090/matrimonyapp/getProfileByEmail${emailId}`).then(function(response){
-            console.log(response);
+        const{mail}=this.state;
+        var g=this;
+        axios.get(`http://13.233.166.249:9090/matrimonyapp/matrimony/getMyProfile/${g.state.mail}`).then(function(response){
+            console.log(response.data);
+            g.setState({profile:response.data.list})
+            console.log(g.state.profile);
         }).catch(function(err){
             console.log(err);
         })
     }
 
-    viewDetails=(id)=>{
-        //this.props.history.push('./viewDetails/'+"sahi");
-    }
+    // main=()=>{
+    //     this.props.history.push('./dashboard/'+this.state.mail)
+    // }
 
     render(){
-        console.log(this.state.emailId);
+        console.log(this.state.profile);
         return(
             <div>
-                    <div className="row">
-                        {this.state.list.map((item,i)=>{
-                        return(
-                            <div  key={list.id} className="col-md-4 mt-5">
-                            
-                                <div className="row">
-                                <div className="col-sm-12">
-                                    <button onClick={() => this.viewDetails(list)}><img src={list.image} width="300px" height="300px" alt="picture"/></button>
-                                </div>
-                                <div className="col-sm-12"> 
-                                    <b>Title:{list.name}</b><br/>
-                                    <b>Price:{list.age}</b><br/>
-                                    <b>{list.occupation}</b><br/>
-                                </div>
-                            
-                            </div>
-                        </div>
-                        )
-                        })}
-                </div>
-   
+            <Header/>
+                <ul>
+                {this.state.profile.map((item,i)=>{
+                    return(
+                        <div className="list">
+                        <li>{item.name}</li><br/>
+                   <li>{item.emailId}</li><br/>
+                   <li>{item.occupation}</li><br/>
+                   <li>{item.height}</li><br/>
+                   <li>{item.color}</li><br/>
+                   <li>{item.maritalStatus}</li><br/>
+                   <li>{item.dob}</li><br/>
+                   <li>{item.mobileNo}</li><br/>
+                   </div>
+                    )
+                })}
+                   
+                </ul>
             </div>
         )
     }
 }
-export default MyProfile;
+export default Contents;

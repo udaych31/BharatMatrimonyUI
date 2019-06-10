@@ -17,7 +17,7 @@ class Contents extends Component{
         const{list1}=this.state;
         const{emailId}=this.state;
         var s=this;
-        axios.get('http://10.117.189.60:9090/matrimonyapp/matrimony/getAllProfiles/?emailId='+emailId).then(function(response){
+        axios.get('http://13.233.166.249:9090/matrimonyapp/matrimony/getAllProfiles/?emailId='+emailId).then(function(response){
             console.log(response);
             s.setState({list1:response.data.profilesList})
             console.log(list1,'///////////////////');

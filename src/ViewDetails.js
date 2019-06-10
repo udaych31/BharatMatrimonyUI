@@ -24,7 +24,7 @@ class ViewDetails extends Component{
     componentDidMount(){
         const{list}=this.state;
         const{id}=this.state;
-        axios.get(`http://10.117.189.60:9090/matrimonyapp/matrimony/getProfileDetails/${this.props.match.params.idParam}`).then((response)=>{
+        axios.get(`http://13.233.166.249:9090/matrimonyapp/matrimony/getProfileDetails/${this.props.match.params.idParam}`).then((response)=>{
             console.log(response.data.person);
             this.setState({list:[response.data.person]})
         }).catch(function(err){
@@ -38,7 +38,7 @@ class ViewDetails extends Component{
 
     req=(i)=>{
         //console.log(this.state.obj.toProfileId,this.state.obj.emailId,this.state.obj.status,'////////');
-        axios.post('http://10.117.189.60:9090/matrimonyapp/matrimony/requestProfile',this.state.obj).then((response)=>{
+        axios.post('http://13.233.166.249:9090/matrimonyapp/matrimony/requestProfile',this.state.obj).then((response)=>{
             console.log(response.data);
             if(response.data.statusCode===201){
                 alert(response.data.message);
@@ -50,7 +50,7 @@ class ViewDetails extends Component{
 
     showReq=()=>{
         const{rep}=this.state;
-        axios.get('http://10.117.189.60:9090/matrimonyapp/matrimony/viewStatus/?emailId='+this.state.obj.emailId).then((response)=>{
+        axios.get('http://13.233.166.249:9090/matrimonyapp/matrimony/viewStatus/?emailId='+this.state.obj.emailId).then((response)=>{
             console.log(response.data.requestStatus);
             this.setState({req:response.data.requestStatus})
             console.log(this.state.req);

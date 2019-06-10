@@ -18,7 +18,7 @@ class Contents extends Component{
     componentDidMount(){
         const{list}=this.state;
         const{mail}=this.state;
-        axios.get(`http://10.117.189.60:9090/matrimonyapp/matrimony/getMyProfile/${this.state.mail}`).then((response) => {
+        axios.get(`http://13.233.166.249:9090/matrimonyapp/matrimony/getMyProfile/${this.state.mail}`).then((response) => {
             console.log(response.data.list);
             this.setState({profile:response.data.list[0]})
             // console.log(g.state.profile);
@@ -44,7 +44,7 @@ class Contents extends Component{
         const{profile}=this.state;
         console.log(profile,'In Update method');
         var global=this;
-        axios.post('http://10.117.189.60:9090/matrimonyapp/matrimony/updateAccount',profile).then(function(response){
+        axios.post('http://13.233.166.249:9090/matrimonyapp/matrimony/updateAccount',profile).then(function(response){
             console.log(response,'In axios');
             if(response.data.statusCode===201){
                 alert(response.data.message);

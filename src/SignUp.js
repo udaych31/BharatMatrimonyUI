@@ -37,11 +37,12 @@ class SignUp extends Component{
         const{notification}=this.state;
         var global=this;
         console.log(regData);
-        axios.post('http://10.233.166.249:9090/matrimonyapp/matrimony/registerAccount',regData).then(function(response){
+        axios.post('http://10.117.189.60:9090/matrimonyapp/matrimony/registerAccount',regData).then(function(response){
             if(response.data.statusCode===401){
                 alert(response.data.message)
             }
             else{
+                alert("success");
                 global.props.history.push('./login')
             }
         }).catch(function(err){
@@ -52,7 +53,7 @@ class SignUp extends Component{
     render(){
         return(
             <div className="box">
-            <h2 align="center">Bharat Matrimony</h2>
+            <h2 align="center" id="top">Bharat Matrimony</h2>
             <h4 align="center">Please Fill Details to Register</h4>
             <div className="sign">
                 <div className="form-group">
@@ -112,7 +113,8 @@ class SignUp extends Component{
                         <label></label><br/>
                         <button type="button" className="btn btn-info" onClick={this.register}>SignUp</button>
                 </div>
-            if registered please <Link to='/login'>Login</Link>
+            if registered please <Link to='/login'>Login</Link><br/>
+            <button><a href="#top">Move up</a></button>
         </div>
         )
     }

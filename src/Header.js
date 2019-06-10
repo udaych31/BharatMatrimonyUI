@@ -29,7 +29,7 @@ class Header extends Component{
                 <div className="sub">
                 <div className="header-right">
                     <button onClick={this.getProfile}><img src={profile} className="logo" height="30px" width="30px"/></button>
-                    <Link to='/contents'><img src={home} className="logo" height="50px" width="50px"/></Link>
+                    <Link><img src={home} className="logo" height="50px" width="50px"/></Link>
                     <Link to='/signUp'><Button><b>SIGNOUT</b></Button></Link>
                </div>
                <div id="mySidenav" className="sidenav">

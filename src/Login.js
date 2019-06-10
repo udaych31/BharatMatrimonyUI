@@ -28,7 +28,7 @@ class Login extends Component{
        // alert(loginData.emailId);
         var sahi=this;
         //this.props.history.push('./contents/'+loginData.emailId);
-        axios.post('http://13.233.166.249:9090/matrimonyapp/matrimony/login',loginData).then(function(response){
+        axios.post('http://10.117.189.60:9090/matrimonyapp/matrimony/login',loginData).then(function(response){
             console.log(response);
             if(response.data.statusCode===200){
             sahi.props.history.push('./contents/'+loginData.emailId);

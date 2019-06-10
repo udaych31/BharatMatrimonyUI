@@ -14,12 +14,13 @@ class Contents extends Component{
     }
 
     componentDidMount(){
-        const{list}=this.state;
+        const{list1}=this.state;
         const{emailId}=this.state;
         var s=this;
-        axios.get('http://13.233.166.249:9090/matrimonyapp/matrimony/getAllProfiles/?emailId='+emailId).then(function(response){
+        axios.get('http://10.117.189.60:9090/matrimonyapp/matrimony/getAllProfiles/?emailId='+emailId).then(function(response){
             console.log(response);
             s.setState({list1:response.data.profilesList})
+            console.log(list1,'///////////////////');
         }).catch(function(err){
             console.log(err);
         })
@@ -27,7 +28,8 @@ class Contents extends Component{
 
     viewDetails=(id)=>{
         console.log(this, id)
-        this.props.history.push('/viewDetails/'+ id.profileId);
+        //this.props.history.push('/viewDetails/'+ id.profileId,this.state.emailId);
+        this.props.history.push('/viewDetails/'+id.profileId+'/'+this.state.emailId);
     }
 
     my=()=>{
@@ -35,9 +37,9 @@ class Contents extends Component{
     }
 
     render(){
-        console.log(this.state.emailId);
+        console.log(this.state.list1);
         return(
-            <div>
+            <div className="contents">
                 <Header/>
             <Button onClick={this.my}>VIEW MY PROFILE</Button>
                   <div className="row">
